@@ -27,6 +27,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+
+
+# fe-youappp-test
+Test Fullstack Youapp 
+# swager 
+https://techtest.youapp.ai/api-docs#/users/UsersController_create
+# docs test
+https://docs.google.com/document/d/1mRe5t2CJABQwgMtRyR7IQ39l1swmUXXpOAdVjFpzOXM/edit#heading=h.t1wt6jitlil
+# Figma 
+https://www.figma.com/file/VnqmoYfwdTzN8qvvDZn6GC/YouApp-Test?type=design&node-id=9-1642&mode=design&t=O6Uw2lYUi3mSdpn5-0
+
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
