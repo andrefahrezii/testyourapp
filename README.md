@@ -1,3 +1,18 @@
+Pages Login
+![image](https://github.com/andrefahrezii/testyourapp/assets/81211215/dba76a5e-e9b7-4933-b807-83664e7ece75)
+
+Page Register
+![image](https://github.com/andrefahrezii/testyourapp/assets/81211215/8572ece2-9109-48c8-b40a-a3c0dd5d58e8)
+
+Page Profile
+![image](https://github.com/andrefahrezii/testyourapp/assets/81211215/b4b0b235-16d6-451f-a196-9204e5c40a53)
+
+Page Edit About
+![image](https://github.com/andrefahrezii/testyourapp/assets/81211215/a99e18bc-5293-4964-86cb-a80521f5eb6d)
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
