@@ -21,12 +21,13 @@ const LoginPage = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await fetch("/api/login", {
-                // const response = await fetch("https://techtest.youapp.ai/api/login", {
+            // const response = await fetch("/api/login", {
+            const response = await fetch("https://techtest.youapp.ai/api/login", {
                 // const response = await fetch("https://backend.wosiangmalam.site/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Origin": "*",
                 },
                 body: JSON.stringify({
                     email: "",

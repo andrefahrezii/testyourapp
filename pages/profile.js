@@ -32,6 +32,9 @@ const RegisterPage = () => {
     const gotAbout = () => {
         navigation.navigate("about");
     };
+    const gotInterest = () => {
+        navigation.navigate("Interest");
+    };
     return (
         <Center flex={1} bg="#09141A">
             <HStack position="absolute" top={4} left={4} alignItems="center" flex={1} justifyContent="center">
@@ -162,9 +165,7 @@ const RegisterPage = () => {
                         alignItems="flex-start"
                         ml="20"
                         icon={<ArrowBackIcon size={3} color="white" />}
-                        onPress={() => {
-                            // Handle navigasi ke halaman edit di sini
-                        }}
+                        onPress={gotInterest}
                     />
                     <Center>
                         <Text color="rgba(255, 255, 255, 0.52)">
