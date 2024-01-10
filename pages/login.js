@@ -13,11 +13,13 @@ import {
     ArrowBackIcon,
 } from "native-base";
 import { EyeIcon, EyeOffIcon } from "native-base";
+// import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    // const navigation = useNavigation();
 
     const handleLogin = async () => {
         try {
@@ -42,7 +44,8 @@ const LoginPage = () => {
                 alert("Login successful");
                 const data = await response.json();
                 localStorage.setItem("token", data.access_token);
-                navigation.navigate("profile");
+                // navigation.navigate("profile");
+                window.location.href = "/profile";
             } else {
                 alert("Login failed. Please check your username and password.");
             }
@@ -54,7 +57,9 @@ const LoginPage = () => {
     };
 
     const goToRegister = () => {
-        navigation.navigate("register");
+        // navigation.navigate("register");
+        window.location.href = "/register";
+
     };
 
     return (

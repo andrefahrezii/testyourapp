@@ -16,7 +16,7 @@ import {
     Stack,
     Image,
 } from "native-base";
-import utils from './utils'; // Note: Import the entire object // Ensure the correct path to your calculateZodiac utility
+import utils from '../utils'; // Note: Import the entire object // Ensure the correct path to your calculateZodiac utility
 import { TouchableOpacity } from "react-native";
 const profilePage = () => {
     const [profileData, setProfileData] = useState(null);
@@ -34,13 +34,16 @@ const profilePage = () => {
 
 
     const gotLogin = () => {
-        navigation.navigate("login");
+        // navigation.navigate("login");
+        window.location.href = "/login";
     };
     const gotAbout = () => {
-        navigation.navigate("about");
+        // navigation.navigate("about");
+        window.location.href = "/about";
     };
     const gotInterest = () => {
-        navigation.navigate("Interest");
+        // navigation.navigate("Interest");
+        window.location.href = "/Interest";
     };
 
     const calculateAndSetZodiacData = (date) => {

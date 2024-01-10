@@ -37,7 +37,8 @@ const RegisterPage = () => {
             if (response.ok) {
                 alert("Register successful");
                 const data = await response.json();
-                navigation.navigate("login");
+                // navigation.navigate("login");
+                window.location.href = "/login";
             } else {
                 alert("Register failed. Please check your username and password.");
             }
@@ -47,7 +48,8 @@ const RegisterPage = () => {
         }
     };
     const gotToHome = () => {
-        navigation.navigate("login");
+        // navigation.navigate("login");
+        window.location.href = "/login";
     };
 
     return (

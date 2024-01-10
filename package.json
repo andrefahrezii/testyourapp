@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@native-base/icons": "^0.0.11",
+    "@react-navigation/native": "^6.1.9",
     "axios": "^1.6.4",
     "cors": "^2.8.5",
     "expo-font": "^10.0.3",

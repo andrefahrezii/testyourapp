@@ -3,7 +3,8 @@ import { Center, IconButton, Text, VStack, HStack, ArrowBackIcon, Box, Button, I
 
 const RegisterPage = () => {
     const gotProfile = () => {
-        navigation.navigate("profile");
+        // navigation.navigate("profile");
+        window.location.href = "/profile";
     };
 
     const [interest, setInterest] = useState("");
@@ -37,7 +38,8 @@ const RegisterPage = () => {
 
             if (response.ok) {
                 console.log('Profile updated successfully');
-                navigation.navigate("profile");
+                // navigation.navigate("profile");
+                window.location.href = "/profile";
                 // Handle navigation or any other logic after a successful update
             } else {
                 console.error('Failed to update profile');

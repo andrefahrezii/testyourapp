@@ -16,16 +16,24 @@ import {
   Button,
   AspectRatio,
 } from "native-base";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 // Start editing here, save and see your changes.
 export default function App() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Redirect to the login page
+    router.push('/login');
+  }, []);
   return (
     <Center
       flex={1}
       _dark={{ bg: "blueGray.900" }}
       _light={{ bg: "blueGray.50" }}
     >
-      <VStack alignItems="center" space="md">
+      {/* <VStack alignItems="center" space="md">
         <HStack alignItems="center" space="2xl">
           <AspectRatio w={24} ratio={1.66}>
             <Image
@@ -83,7 +91,7 @@ export default function App() {
         <Button variant="outline" colorScheme="coolGray">
           View Repo
         </Button>
-      </Link>
+      </Link> */}
     </Center>
   );
 }

@@ -20,7 +20,7 @@ import {
     Select,
     CheckIcon,
 } from "native-base";
-import calculateZodiac from "./utils";
+import calculateZodiac from "../utils";
 
 // import bg from 'public/images/bg.png';
 const aboutPage = () => {
@@ -32,7 +32,8 @@ const aboutPage = () => {
     const [height, setHeight] = useState(0);
     const [weight, seWeight] = useState(0);
     const gotProfile = () => {
-        navigation.navigate("profile");
+        // navigation.navigate("profile");
+        window.location.href = "/profile";
     };
     // const saveAbout = () => {
     //     navigation.navigate("about");
@@ -142,7 +143,8 @@ const aboutPage = () => {
                 });
                 if (response.ok) {
                     console.log('Data saved successfully');
-                    navigation.navigate("profile");
+                    // navigation.navigate("profile");
+                    window.location.href = "/profile";
                 } else {
                     console.error('Failed to save data');
                 }
