@@ -5,3 +5,5 @@ node_modules/*
 !node_modules/react
 !node_modules/react-dom
 !node_modules/your-other-production-dependency
+.expo
+!.expo

@@ -21,6 +21,6 @@ RUN npm install --only=production
 COPY --from=builder /app/.next ./.next
 COPY public ./public
 
-EXPOSE 3000
+EXPOSE 3030
 
 CMD ["npm", "start"]
