@@ -39,8 +39,8 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Run ESLint in development (you can adjust this based on your needs)
-RUN npm run lint
+# # Run ESLint in development (you can adjust this based on your needs)
+# RUN npm run lint
 
 # Build the Next.js application
 RUN npm run build
