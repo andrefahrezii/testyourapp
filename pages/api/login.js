@@ -7,6 +7,7 @@ export default async function handler(req, res) {
         try {
             if (username.trim() !== '' && password.trim() !== '') {
                 const response = await axios.post('https://techtest.youapp.ai/api/login', {
+                    email: "",
                     username: username,
                     password: password,
                 });
@@ -34,6 +35,7 @@ export default async function handler(req, res) {
         } catch (error) {
             console.log(error)
             console.error('An error occurred during login:', error.message);
+            console.log("asdasdasda")
             res.status(500).json({
                 success: false,
                 message: 'An error occurred during login. Please check your network connection.',

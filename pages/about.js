@@ -20,17 +20,17 @@ import {
     Select,
     CheckIcon,
 } from "native-base";
+import calculateZodiac from "./utils";
 
 // import bg from 'public/images/bg.png';
-
 const aboutPage = () => {
-    const [displayName, setDisplayName] = useState("");
+    const [name, setDisplayName] = useState("");
     const [gender, setGender] = useState("");
     const [birthday, setBirthday] = useState("");
     const [zodiac, setZodiac] = useState("");
     const [horoscope, setHoroscope] = useState("");
-    const [height, setHeight] = useState("");
-    const [weight, seWeight] = useState("");
+    const [height, setHeight] = useState(0);
+    const [weight, seWeight] = useState(0);
     const gotProfile = () => {
         navigation.navigate("profile");
     };
@@ -38,88 +38,88 @@ const aboutPage = () => {
     //     navigation.navigate("about");
     // };
 
-    const calculateZodiac = (date) => {
-        // Check if date is a string
-        if (typeof date !== 'string') {
-            return 'Invalid date format';
-        }
+    // const calculateZodiac = (date) => {
+    //     // Check if date is a string
+    //     if (typeof date !== 'string') {
+    //         return 'Invalid date format';
+    //     }
 
-        // Split the date using space as the delimiter
-        const dobArray = date.split(' ');
+    //     // Split the date using space as the delimiter
+    //     const dobArray = date.split(' ');
 
-        // Extract day, month, and year from the array
-        const day = parseInt(dobArray[0]);
-        const month = parseInt(dobArray[1]);
-        const year = parseInt(dobArray[2]);
+    //     // Extract day, month, and year from the array
+    //     const day = parseInt(dobArray[0]);
+    //     const month = parseInt(dobArray[1]);
+    //     const year = parseInt(dobArray[2]);
 
-        // Perform zodiac calculation based on day and month
-        if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-            return {
-                sign: 'Aries (Ram)',
-                icon: '♈',
-            };
-        } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-            return {
-                sign: 'Taurus (Bull)',
-                icon: '♉',
-            };
-        } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
-            return {
-                sign: 'Gemini (Twins)',
-                icon: '♊',
-            };
-        } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
-            return {
-                sign: 'Cancer (Crab)',
-                icon: '♋',
-            };
-        } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
-            return {
-                sign: 'Leo (Lion)',
-                icon: '♌',
-            };
-        } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
-            return {
-                sign: 'Virgo (Virgin)',
-                icon: '♍',
-            };
-        } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
-            return {
-                sign: 'Libra (Balance)',
-                icon: '♎',
-            };
-        } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
-            return {
-                sign: 'Scorpius (Scorpion)',
-                icon: '♏',
-            };
-        } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
-            return {
-                sign: 'Sagittarius (Archer)',
-                icon: '♐',
-            };
-        } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
-            return {
-                sign: 'Capricornus (Goat)',
-                icon: '♑',
-            };
-        } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
-            return {
-                sign: 'Aquarius (Water Bearer)',
-                icon: '♒',
-            };
-        } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
-            return {
-                sign: 'Pisces (Fish)',
-                icon: '♓',
-            };
-        } else {
-            return {
-                sign: '',
-                icon: '',
-            };
-        }
-    };
+    //     // Perform zodiac calculation based on day and month
+    //     if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+    //         return {
+    //             sign: 'Aries (Ram)',
+    //             icon: '♈',
+    //         };
+    //     } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+    //         return {
+    //             sign: 'Taurus (Bull)',
+    //             icon: '♉',
+    //         };
+    //     } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+    //         return {
+    //             sign: 'Gemini (Twins)',
+    //             icon: '♊',
+    //         };
+    //     } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+    //         return {
+    //             sign: 'Cancer (Crab)',
+    //             icon: '♋',
+    //         };
+    //     } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+    //         return {
+    //             sign: 'Leo (Lion)',
+    //             icon: '♌',
+    //         };
+    //     } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+    //         return {
+    //             sign: 'Virgo (Virgin)',
+    //             icon: '♍',
+    //         };
+    //     } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+    //         return {
+    //             sign: 'Libra (Balance)',
+    //             icon: '♎',
+    //         };
+    //     } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+    //         return {
+    //             sign: 'Scorpius (Scorpion)',
+    //             icon: '♏',
+    //         };
+    //     } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+    //         return {
+    //             sign: 'Sagittarius (Archer)',
+    //             icon: '♐',
+    //         };
+    //     } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+    //         return {
+    //             sign: 'Capricornus (Goat)',
+    //             icon: '♑',
+    //         };
+    //     } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+    //         return {
+    //             sign: 'Aquarius (Water Bearer)',
+    //             icon: '♒',
+    //         };
+    //     } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+    //         return {
+    //             sign: 'Pisces (Fish)',
+    //             icon: '♓',
+    //         };
+    //     } else {
+    //         return {
+    //             sign: '',
+    //             icon: '',
+    //         };
+    //     }
+    // };
 
     const saveAbout = () => {
         const saveDataToApi = async () => {
@@ -132,19 +132,17 @@ const aboutPage = () => {
                         'x-access-token': localStorage.getItem("token"),
                     },
                     body: JSON.stringify({
-                        displayName,
-                        gender,
+                        name,
                         birthday,
-                        zodiac,
-                        horoscope,
-                        height,
-                        weight,
+                        height: parseInt(height), // Convert to integer
+                        weight: parseFloat(weight),
+                        gender,
+                        interests: []
                     }),
                 });
-
                 if (response.ok) {
                     console.log('Data saved successfully');
-                    navigation.navigate("about");
+                    navigation.navigate("profile");
                 } else {
                     console.error('Failed to save data');
                 }
@@ -159,15 +157,10 @@ const aboutPage = () => {
 
     const handleDateChange = (text) => {
         setBirthday(text);
-        // Konversi string tanggal menjadi objek Date
         const date = new Date(text)
-
-        // Hitung zodiak berdasarkan tanggal lahir
         const zodiac = calculateZodiac(text);
         setZodiac(zodiac.sign)
         setHoroscope(zodiac.icon)
-        // Set nilai zodiac ke state atau field yang diinginkan
-        // Contoh: setZodiac(zodiac);
     };
 
 
@@ -287,7 +280,7 @@ const aboutPage = () => {
                                 <Input
                                     color="white"
                                     placeholder="Enter Name"
-                                    value={displayName}
+                                    value={name}
                                     onChangeText={(text) => setDisplayName(text)}
                                 />
                             </HStack>

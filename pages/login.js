@@ -21,12 +21,13 @@ const LoginPage = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await fetch("/api/login", {
-                // const response = await fetch("https://techtest.youapp.ai/api/login", {
+            // const response = await fetch("/api/login", {
+            const response = await fetch("https://techtest.youapp.ai/api/login", {
                 // const response = await fetch("https://backend.wosiangmalam.site/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Origin": "*",
                 },
                 body: JSON.stringify({
                     email: "",
@@ -36,10 +37,11 @@ const LoginPage = () => {
                 // username: 'kminchelle',
                 // password: '0lelplR',
             });
+
             if (response.ok) {
                 alert("Login successful");
                 const data = await response.json();
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.access_token);
                 navigation.navigate("profile");
             } else {
                 alert("Login failed. Please check your username and password.");
@@ -56,7 +58,7 @@ const LoginPage = () => {
     };
 
     return (
-        <Center flex={1} bg="blueGray.900">
+        <Center flex={1} bg="blueGray.900" height="100vh">
             <HStack position="absolute" top={4} left={4} alignItems="center">
                 <IconButton
                     onPress={() => console.log("Back pressed")}
