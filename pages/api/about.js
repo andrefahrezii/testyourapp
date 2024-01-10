@@ -4,46 +4,44 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
             const {
-                username,
-                password,
-                displayName,
-                gender,
+                name,
                 birthday,
-                zodiac,
-                horoscope,
                 height,
                 weight,
+                interests
             } = req.body;
 
-
+            const token = req.headers['x-access-token'] || '';
 
             const response = await axios.post('https://techtest.youapp.ai/api/createProfile', {
-                username,
-                password,
-                displayName,
-                gender,
+                name,
                 birthday,
-                zodiac,
-                horoscope,
                 height,
                 weight,
+                interests
+            }, {
+                headers: {
+                    'x-access-token': token,
+                    'Content-Type': 'application/json',
+                },
             });
+            console.log(response.status)
             if (response.status === 200) {
                 const data = response.data;
-                console.log('Login successful');
-                return res.status(200).json({ success: true, message: 'Login successful', token: data.token });
+                console.log('Profile created successfully');
+                return res.status(201).json({ success: true, message: 'Profile created successfully', token: data.token });
             } else {
-                console.log('Login failed');
+                console.log('Profile creation failed');
                 return res.status(response.status).json({
                     success: false,
-                    message: 'Login failed. Please check your username and password.',
+                    message: 'Profile creation failed. Please check your input data.',
                 });
             }
         } catch (error) {
-            console.error('An error occurred during login:', error.message);
+            console.error('An error occurred during profile creation:', error.message);
             return res.status(500).json({
                 success: false,
-                message: 'An error occurred during login. Please check your network connection.',
+                message: 'An error occurred during profile creation. Please check your network connection.',
             });
         }
     }

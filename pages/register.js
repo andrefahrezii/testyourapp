@@ -29,8 +29,9 @@ const RegisterPage = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    username: username,
-                    password: password,
+                    email,
+                    username,
+                    password,
                 }),
             });
             if (response.ok) {
@@ -53,7 +54,7 @@ const RegisterPage = () => {
         <Center flex={1} bg="blueGray.900">
             <HStack position="absolute" top={4} left={4} alignItems="center">
                 <IconButton
-                    onPress={() => console.log("Back pressed")}
+                    onPress={gotToHome}
                     icon={<ArrowBackIcon color="white" size={4} />}
                 />
                 <Text color="white" ml={2}>
@@ -101,6 +102,7 @@ const RegisterPage = () => {
                         width="100%"
                         value={password}
                         onChangeText={(text) => setPassword(text)}
+
                     // InputRightElement={
                     //     <IconButton
                     //         onPress={() => setShowPassword(!showPassword)}
