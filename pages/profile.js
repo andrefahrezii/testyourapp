@@ -16,19 +16,22 @@ import {
     Stack,
     Image,
 } from "native-base";
-import calculateZodiac from "./utils"; // Ensure the correct path to your calculateZodiac utility
+import utils from './utils'; // Note: Import the entire object // Ensure the correct path to your calculateZodiac utility
 import { TouchableOpacity } from "react-native";
 const profilePage = () => {
     const [profileData, setProfileData] = useState(null);
     const [zodiac, setZodiac] = useState("");
     const [horoscope, setHoroscope] = useState("");
+    const [age, setAge] = useState("");
     const aboutInfo = [
-        { label: 'Birthday', value: profileData && profileData.data ? profileData.data.birthday : "" },
+        { label: 'Birthday', value: profileData?.data?.birthday + (age !== null ? ` (${age} Age)` : "") },
         { label: 'Horoscope', value: zodiac },
         { label: 'Zodiac', value: horoscope },
         { label: 'Height', value: profileData && profileData.data ? profileData.data.height : "" },
         { label: 'Weight', value: profileData && profileData.data ? profileData.data.weight : "" },
     ];
+
+
 
     const gotLogin = () => {
         navigation.navigate("login");
@@ -41,10 +44,16 @@ const profilePage = () => {
     };
 
     const calculateAndSetZodiacData = (date) => {
-        const zodiacData = calculateZodiac(date);
+        const zodiacData = utils.calculateZodiac(date);
         setZodiac(zodiacData.sign);
         setHoroscope(zodiacData.icon);
     };
+
+    const calculateAges = (date) => {
+        const age = utils.calculateAge(date);
+        setAge(age);
+    };
+
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -65,6 +74,7 @@ const profilePage = () => {
 
                     // Calculate and set zodiac data
                     calculateAndSetZodiacData(data && data.data ? data.data.birthday : "");
+                    calculateAges(data && data.data ? data.data.birthday : "");
                 } else {
                     console.error("Error fetching profile data:", response.status);
                 }
@@ -87,7 +97,6 @@ const profilePage = () => {
                 </Text >
                 <Text color="white" ml={40} mx={2}>
                     {profileData && profileData.data ? profileData.data.username : ""}
-
                 </Text>
             </HStack >
             <Center
@@ -102,11 +111,12 @@ const profilePage = () => {
                     height="190px"
                     borderRadius="16px"
                     bg="white"
-                    p={4}
+                    // p={4}
                     space=""
                     justifyContent="center"
                     alignItems="left"
                     marginBottom={4}
+                    position="relative"
                 >
                     <Image
                         source={{ uri: "images/bg.png" }}
@@ -114,10 +124,20 @@ const profilePage = () => {
                         width="100%"
                         height="100%"
                         resizeMode="cover"
+                        style={{
+                            borderRadius: '16px', // Set the same borderRadius as the Card
+                            position: 'absolute',
+                            left: 0, // Position the image absolutely within the Card
+                        }}
                     />
                     <HStack>
+                        <Center>
+                            <Text color="white" ml={2}>
+                                {profileData && profileData.data ? profileData.data.username : ""}
+                            </Text>
+                        </Center>
                         <Center
-                            bg="violet.500"
+                            bg="#09141A"
                             _dark={{
                                 bg: "violet.400",
                             }}
@@ -127,13 +147,14 @@ const profilePage = () => {
                                 fontSize: "xs",
                             }}
                             position="absolute"
-                            bottom="5"
+                            // bottom=""
                             px="2"
                             py="2"
                             ml="2"
-                            borderRadius={5}
+                            mt={10}
+                            borderRadius={8}
                         >
-                            {zodiac + horoscope || ""}
+                            {horoscope || ""}
                         </Center>
                         {/* <Center
                             bg="violet.500"

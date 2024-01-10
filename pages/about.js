@@ -189,11 +189,12 @@ const aboutPage = () => {
                     height="190px"
                     borderRadius="16px"
                     bg="white"
-                    p={4}
+                    // p={4}
                     space=""
                     justifyContent="center"
                     alignItems="left"
                     marginBottom={4}
+                    position="relative"
                 >
                     <Image
                         source={{ uri: "images/bg.png" }}
@@ -201,10 +202,20 @@ const aboutPage = () => {
                         width="100%"
                         height="100%"
                         resizeMode="cover"
+                        style={{
+                            borderRadius: '16px', // Set the same borderRadius as the Card
+                            position: 'absolute',
+                            left: 0, // Position the image absolutely within the Card
+                        }}
                     />
                     <HStack>
+                        <Center>
+                            <Text color="white" ml={2}>
+                                username
+                            </Text>
+                        </Center>
                         <Center
-                            bg="violet.500"
+                            bg="#09141A"
                             _dark={{
                                 bg: "violet.400",
                             }}
@@ -214,14 +225,16 @@ const aboutPage = () => {
                                 fontSize: "xs",
                             }}
                             position="absolute"
-                            bottom="5"
+                            // bottom=""
                             px="2"
                             py="2"
                             ml="2"
+                            mt={10}
+                            borderRadius={8}
                         >
-                            Virgo
+                            {horoscope || ""}
                         </Center>
-                        <Center
+                        {/* <Center
                             bg="violet.500"
                             _dark={{
                                 bg: "violet.400",
@@ -233,12 +246,12 @@ const aboutPage = () => {
                             }}
                             position="absolute"
                             bottom="5"
-                            ml="20"
+                            ml="50"
                             px="2"
                             py="2"
                         >
                             Pig
-                        </Center>
+                        </Center> */}
                     </HStack>
                 </Card>
                 {/* about */}

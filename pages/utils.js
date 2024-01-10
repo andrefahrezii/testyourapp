@@ -80,4 +80,41 @@ const calculateZodiac = (date) => {
         };
     }
 };
-export default calculateZodiac;
+
+const calculateAge = (birthday) => {
+    const [day, month, year] = birthday.split(' ').map(Number);
+
+    // Check if the parsed values are valid
+    if (isNaN(day) || isNaN(month) || isNaN(year)) {
+        console.error("Invalid date format");
+        return null;  // or return an appropriate value indicating an error
+    }
+
+    // Create Date objects with the correct format
+    const birthDate = new Date(year, month - 1, day); // month - 1 because months are zero-indexed
+    const currentDate = new Date();
+
+    // Check if the Date objects are valid
+    if (isNaN(birthDate.getTime()) || isNaN(currentDate.getTime())) {
+        console.error("Invalid Date object");
+        return null;  // or return an appropriate value indicating an error
+    }
+
+    // Calculate the difference in years
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    // Check if the birthday hasn't occurred yet this year
+    const hasBirthdayPassed = (
+        currentDate.getMonth() > birthDate.getMonth() ||
+        (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() >= birthDate.getDate())
+    );
+
+    // If the birthday hasn't occurred yet this year, subtract 1 from the age
+    if (!hasBirthdayPassed) {
+        age--;
+    }
+
+    return age;
+};
+
+export default { calculateZodiac, calculateAge };
