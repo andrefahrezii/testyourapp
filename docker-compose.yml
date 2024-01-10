@@ -1,12 +1,21 @@
-version: "3.8"
+# version: "3.8"
 
+# services:
+#   web:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "3030:3000"
+#     environment:
+#       NODE_ENV: production
+#     command: npm start
+version: "3"
 services:
-  web:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3030:3000" # Map host port 3030 to container port 3030
-    environment:
-      NODE_ENV: production
-    command: npm start
+      - "3030:3000"
+    restart: always
