@@ -23,7 +23,8 @@
     "react-native-svg": "^12.1.1",
     "react-native-web": "^0.17.7",
     "react-native-web-linear-gradient": "^1.1.2",
-    "react-router-native": "^6.21.1"
+    "react-router-native": "^6.21.1",
+    "socket.io-client": "^4.7.4"
   },
   "devDependencies": {
     "@native-base/next-adapter": "^1.1.9",
